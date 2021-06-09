@@ -3,12 +3,30 @@ import { camera, trash, close } from 'ionicons/icons';
 import {
   IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
   IonFab, IonFabButton, IonIcon, IonGrid, IonRow,
-  IonCol, IonImg, IonActionSheet
+  IonCol, IonImg, IonActionSheet, useIonViewDidEnter,
+  useIonViewDidLeave,
+  useIonViewWillEnter,
+  useIonViewWillLeave
 } from '@ionic/react';
 import { usePhotoGallery, UserPhoto } from "../hooks/usePhotoGallery";
 import './Tab2.css';
 
 const Tab2: React.FC = () => {
+  useIonViewDidEnter(() => {
+    console.log('ionViewDidEnter event fired');
+  });
+
+  useIonViewDidLeave(() => {
+    console.log('ionViewDidLeave event fired');
+  });
+
+  useIonViewWillEnter(() => {
+    console.log('ionViewWillEnter event fired');
+  });
+
+  useIonViewWillLeave(() => {
+    console.log('ionViewWillLeave event fired');
+  });
   const { photos, takePhoto, deletePhoto } = usePhotoGallery();
   const [photoToDelete, setPhotoToDelete] = useState<UserPhoto>();
   return (
